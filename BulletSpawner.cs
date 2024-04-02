@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BulletsSpawner : MonoBehaviour
 {
-    [SerializeField, Min(0)] private float _shootVelocity;
+    [SerializeField, Min(0)] private float _bulletVelocity;
     [SerializeField, Min(0)] private float _timeBetweeShoot;
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _spawnPoint;
@@ -25,7 +25,7 @@ public class BulletsSpawner : MonoBehaviour
             GameObject newBullet = Instantiate(_bulletPrefab, transform.position + shootDirection, Quaternion.identity);
 
             newBullet.transform.up = shootDirection;
-            newBullet.GetComponent<Rigidbody>().velocity = shootDirection * _shootVelocity;
+            newBullet.GetComponent<Rigidbody>().velocity = shootDirection * _bulletVelocity;
 
             yield return _delay;
         }
