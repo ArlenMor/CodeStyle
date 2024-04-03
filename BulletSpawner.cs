@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BulletsSpawner : MonoBehaviour
 {
-    [SerializeField, Min(0)] private float _shootVelocity;
+    [SerializeField, Min(0)] private float _bulletVelocity;
     [SerializeField, Min(0)] private float _timeBetweeShoot;
     [SerializeField] private Rigidbody _bulletPrefab;
     [SerializeField] private Transform _spawnPoint;
