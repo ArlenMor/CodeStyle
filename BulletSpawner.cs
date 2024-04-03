@@ -5,7 +5,7 @@ public class BulletsSpawner : MonoBehaviour
 {
     [SerializeField, Min(0)] private float _shootVelocity;
     [SerializeField, Min(0)] private float _timeBetweeShoot;
-    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Rigidbody _bulletPrefab;
     [SerializeField] private Transform _spawnPoint;
 
     private WaitForSeconds _delay;
@@ -22,10 +22,10 @@ public class BulletsSpawner : MonoBehaviour
         while (enabled)
         {
             Vector3 shootDirection = (_spawnPoint.position - transform.position).normalized;
-            GameObject newBullet = Instantiate(_bulletPrefab, transform.position + shootDirection, Quaternion.identity);
+            Rigidbody newBullet = Instantiate(_bulletPrefab, transform.position + shootDirection, Quaternion.identity);
 
             newBullet.transform.up = shootDirection;
-            newBullet.GetComponent<Rigidbody>().velocity = shootDirection * _shootVelocity;
+            newBullet.velocity = shootDirection * _shootVelocity;
 
             yield return _delay;
         }
